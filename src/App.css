@@ -57,11 +57,24 @@ main {
   border-color: transparent;
 }
 
+/* Split pane custom */
+
+/* Pane2 is the result pane */
 .Pane2 {
   background-color: rgb(255, 255, 250);
   padding: 0 15px;
+  display: flex;
 }
-
 .Pane {
   overflow-y: scroll;
+}
+.SplitPane {
+  /* Prevent overflowing beyond the view height */
+  /* !important necessary to override the inline css imposed by the library */
+  height: calc(100vh - 54px) !important;
+}
+
+/* override bs */
+.navbar {
+  padding: 0;
 }

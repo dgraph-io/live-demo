@@ -36,7 +36,7 @@ class App extends Component {
   };
 
   handleClearQuery = () => {
-    this.setState({ query: "" });
+    this.setState({ query: "", result: "" });
   };
 
   handleIncrementFontSize = () => {

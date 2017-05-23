@@ -1,6 +1,9 @@
 import React from "react";
 import JSONTree from "react-json-tree";
 
+import "../assets/css/Result.css";
+import logo from "../assets/images/gopherconsg.svg";
+
 const theme = {
   scheme: "monokai",
   author: "wimer hazenberg (http://www.monokai.nl)",
@@ -23,6 +26,14 @@ const theme = {
 };
 
 const Result = ({ result, fontSize }) => {
+  if (!result) {
+    return (
+      <div className="empty-result-container">
+        <img src={logo} alt="hello" className="placeholder-img" />
+      </div>
+    );
+  }
+
   const { server_latency: omit, ...data } = result;
   return (
     <div className="result-container" style={{ fontSize: `${fontSize}px` }}>

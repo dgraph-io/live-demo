@@ -1,0 +1,10 @@
+.empty-result-container {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.placeholder-img {
+  width: 328px;
+}
