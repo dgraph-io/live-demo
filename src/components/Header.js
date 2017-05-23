@@ -16,13 +16,13 @@ const Header = ({
   return (
     <div className="navbar navbar-light bg-faded">
       <div className="container">
-        <a href="#" className="navbar-brand">
+        <a href="/" className="navbar-brand">
           <img src={logo} alt="logo" className="logo" />
         </a>
 
         <div className="actions">
           <a
-            href="#"
+            href="#run"
             className={classnames("action run-btn", {
               actionable: query !== ""
             })}
@@ -38,7 +38,7 @@ const Header = ({
             <i className="fa fa-play" /> Run
           </a>
           <a
-            href="#"
+            href="#clear"
             className={classnames("action clear-btn", {
               actionable: query !== ""
             })}
@@ -54,7 +54,7 @@ const Header = ({
             <i className="fa fa-close" /> Clear
           </a>
           <a
-            href="#"
+            href="#inc-font"
             className={classnames("action run-btn", {
               actionable: query !== ""
             })}
@@ -66,7 +66,7 @@ const Header = ({
             Font +
           </a>
           <a
-            href="#"
+            href="#dec-font"
             className={classnames("action run-btn")}
             onClick={e => {
               e.preventDefault();
