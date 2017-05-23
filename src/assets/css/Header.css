@@ -1,0 +1,14 @@
+.logo {
+  width: 87px;
+}
+
+.actions {
+  display: inline-block;
+}
+
+.action {
+  display: inline-block;
+  padding: 5px 13px;
+  border-left: 1px solid #cecece;
+  color: #383838;
+}
