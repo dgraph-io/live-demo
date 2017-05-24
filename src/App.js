@@ -65,7 +65,7 @@ class App extends Component {
         />
 
         <main>
-          <SplitPane split="vertical" defaultSize="50%">
+          <SplitPane split="vertical" defaultSize="40%">
             <EditorPanel
               query={query}
               onRunQuery={this.handleQueryRun}

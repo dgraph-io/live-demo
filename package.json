@@ -6,12 +6,13 @@
     "classnames": "^2.2.5",
     "codemirror": "^5.26.0",
     "codemirror-graphql": "^0.6.4",
-    "json-formatter-js": "^2.2.0",
-    "prettyjson": "^1.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-json-tree": "^0.10.9",
-    "react-split-pane": "^0.1.63"
+    "react-show-more": "^1.1.1",
+    "react-split-pane": "^0.1.63",
+    "react-treeview": "^0.4.6",
+    "react-truncate": "^2.1.4"
   },
   "devDependencies": {
     "react-scripts": "1.0.5"

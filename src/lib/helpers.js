@@ -19,7 +19,7 @@ export function checkStatus(response) {
 
 // getEndpoint returns a URL for the dgraph endpoint, optionally followed by
 // path string. Do not prepend `path` with slash.
-export function getEndpoint(path = "", options = { debug: true }) {
+export function getEndpoint(path = "", options = { debug: false }) {
   const baseURL = getEndpointBaseURL();
   const url = `${baseURL}/${path}`;
 
@@ -52,7 +52,7 @@ export function sortStrings(a, b) {
 }
 
 export function runQuery(query) {
-  const endpoint = getEndpoint("query", { debug: true });
+  const endpoint = getEndpoint("query");
 
   return timeout(
     60000,

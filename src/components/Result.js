@@ -1,29 +1,67 @@
 import React from "react";
-import JSONTree from "react-json-tree";
+import TreeView from "react-treeview";
+import classnames from "classnames";
+import Showmore from "react-show-more";
 
 import "../assets/css/Result.css";
 import logo from "../assets/images/gopherconsg.svg";
 
-const theme = {
-  scheme: "monokai",
-  author: "wimer hazenberg (http://www.monokai.nl)",
-  base00: "#272822",
-  base01: "#383830",
-  base02: "#49483e",
-  base03: "#75715e",
-  base04: "#a59f85",
-  base05: "#f8f8f2",
-  base06: "#f5f4f1",
-  base07: "#f9f8f5",
-  base08: "#f92672",
-  base09: "#fd971f",
-  base0A: "#f4bf75",
-  base0B: "#a6e22e",
-  base0C: "#a1efe4",
-  base0D: "#66d9ef",
-  base0E: "#ae81ff",
-  base0F: "#cc6633"
-};
+function isObject(val) {
+  if (val === null) {
+    return false;
+  }
+  return typeof val === "function" || typeof val === "object";
+}
+
+function isString(val) {
+  return typeof val === "string";
+}
+
+function renderTree(node) {
+  if (Array.isArray(node)) {
+    return node.map((val, idx) => {
+      return renderTree(val);
+    });
+  } else if (isObject(node)) {
+    return Object.keys(node).map((key, i) => {
+      const val = node[key];
+
+      let hasTreeChild = false;
+      if (isObject(val) || Array.isArray(val)) {
+        hasTreeChild = true;
+      }
+
+      return (
+        <TreeView
+          key={key + "|" + i}
+          nodeLabel={`${key}:`}
+          defaultCollapsed={false}
+          itemClassName={classnames({ "has-tree-child": hasTreeChild })}
+        >
+          {renderTree(val)}
+        </TreeView>
+      );
+    });
+  } else {
+    if (isString(node)) {
+      return (
+        <div className="nodetype-string">
+          <Showmore lines={1} more="more">
+            <span className="test">
+              {node}
+            </span>
+          </Showmore>
+        </div>
+      );
+    }
+
+    let klass;
+    if (!isNaN(node)) {
+      klass = "nodetype-number";
+    }
+    return <span className={klass}>{node}</span>;
+  }
+}
 
 const Result = ({ result, fontSize }) => {
   if (!result) {
@@ -35,15 +73,10 @@ const Result = ({ result, fontSize }) => {
   }
 
   const { server_latency: omit, ...data } = result;
+
   return (
-    <div className="result-container" style={{ fontSize: `${fontSize}px` }}>
-      <JSONTree
-        data={data}
-        shouldExpandNode={(keyname, data, level) => {
-          return level < 3;
-        }}
-        theme={theme}
-      />
+    <div style={{ fontSize: `${fontSize}px` }}>
+      {renderTree(data)}
     </div>
   );
 };
