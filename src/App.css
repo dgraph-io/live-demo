@@ -131,6 +131,14 @@ main {
 .tree-view_item:not(.has-tree-child) .tree-view_arrow {
   visibility: hidden;
 }
+
+.tree-view:not(.has-tree-child) {
+  display: flex;
+}
+.tree-view:not(.has-tree-child) .tree-view_children {
+  flex: 1;
+}
+
 .tree-view_item.has-tree-child {
   display: block;
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import TreeView from "react-treeview";
 import classnames from "classnames";
 import Showmore from "react-show-more";
+import uuid from "uuid";
 
 import "../assets/css/Result.css";
 import logo from "../assets/images/gopherconsg.svg";
+import TreeView from "./Treeview";
 
 function isObject(val) {
   if (val === null) {
@@ -33,10 +34,12 @@ function renderTree(node) {
 
       return (
         <TreeView
-          key={key + "|" + i}
+          key={uuid()}
           nodeLabel={`${key}:`}
           defaultCollapsed={false}
           itemClassName={classnames({ "has-tree-child": hasTreeChild })}
+          childrenClassName={classnames({ "has-tree-child": hasTreeChild })}
+          treeViewClassName={classnames({ "has-tree-child": hasTreeChild })}
         >
           {renderTree(val)}
         </TreeView>
