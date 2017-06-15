@@ -70,7 +70,8 @@ const Result = ({ result, fontSize }) => {
   if (!result) {
     return (
       <div className="empty-result-container">
-        <img src={logo} alt="hello" className="placeholder-img" />
+        {/*
+          <img src={logo} alt="hello" className="placeholder-img" />*/}
       </div>
     );
   }
